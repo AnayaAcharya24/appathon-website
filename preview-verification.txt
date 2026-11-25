@@ -1,0 +1,23 @@
+AppThon preview verification — 2026-11-24
+
+Source inspected:
+- src/pages/Home.tsx
+- src/index.css
+- src/components/CompetitionCanvas.tsx
+- src/components/CompetitionCanvas.css
+
+Desktop preview checks:
+- Home hero renders and remains intact.
+- Competition section enters directly below the sticky hero with the hero visible behind the incoming section.
+- Competition section is full viewport width with no outer side gutters or rounded outer card frame.
+- Competition top edge uses a soft white/pale-lavender and purple glow instead of a solid border.
+- Final CTA has no explicit top border or hard separator.
+- Final CTA transition uses a blurred white-centred violet/lavender wash behind the content.
+- CTA heading, buttons and sculpture remain sharp.
+- Existing routes and content remain present in the rendered page.
+
+Validation:
+- npm run build: passed
+- npm run lint: passed with 0 warnings and 0 errors
+- git diff --check: passed
+- Preview HTTP response: 200
