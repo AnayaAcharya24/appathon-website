@@ -63,8 +63,12 @@ export default function Home() {
         />
       </div>
 
-      {/* Social Impact */}
+	      {/* Social Impact */}
 	      <section id="social-impact" className="home-social-impact w-full bg-midnight px-6 pb-12">
+	        <video className="home-social-impact__video" autoPlay muted loop playsInline preload="auto" poster="/images/social-impact-bg-poster.jpg" aria-hidden="true">
+	          <source src="/videos/social-impact-bg.mp4" type="video/mp4" />
+	        </video>
+	        <div className="home-social-impact__overlay" aria-hidden="true" />
 	        <div className="home-social-impact__inner mx-auto max-w-7xl">
 	          <SectionHead eyebrow="Social Impact" title="One theme. Meaningful change." sub="Every team must develop an application based on the single Social Impact theme." />
 	          <Card className="home-social-impact__card mt-8 !p-8 border-brand/25 bg-brand/10">
