@@ -64,10 +64,10 @@ export default function Home() {
       </div>
 
       {/* Social Impact */}
-      <section id="social-impact" className="w-full bg-midnight px-6 pb-12">
-        <div className="mx-auto max-w-7xl">
-          <SectionHead eyebrow="Social Impact" title="One theme. Meaningful change." sub="Every team must develop an application based on the single Social Impact theme." />
-          <Card className="mt-8 !p-8 border-brand/25 bg-brand/10">
+	      <section id="social-impact" className="home-social-impact w-full bg-midnight px-6 pb-12">
+	        <div className="home-social-impact__inner mx-auto max-w-7xl">
+	          <SectionHead eyebrow="Social Impact" title="One theme. Meaningful change." sub="Every team must develop an application based on the single Social Impact theme." />
+	          <Card className="home-social-impact__card mt-8 !p-8 border-brand/25 bg-brand/10">
             <p className="text-white/75 leading-relaxed">
               Social Impact is the central theme of Appathon. Participants are challenged to build innovative applications that address real-world social problems, meet community needs and create meaningful, lasting positive change through technology. Projects should combine creativity and practical solutions to make a genuine difference in people's lives.
             </p>
