@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { VIDEO_URL } from '../lib/store'
 
-/** Shared video hero and page-hero components for the AppThon site. */
+/** Shared video hero and page-hero components for the Appathon site. */
 export default function VideoHero({
   eyebrow,
   title,
@@ -34,7 +34,7 @@ export default function VideoHero({
         preload="auto"
       />
       <div className="hero-video-overlay" aria-hidden="true" />
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-2 pt-28 pb-16 text-center sm:px-6 sm:pt-32 sm:pb-24">
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-4 pt-28 pb-16 text-center sm:px-6 sm:pt-32 sm:pb-24">
         <p className="animate-fade-rise text-[13px] font-medium uppercase tracking-[0.22em] text-brand-bright sm:text-sm">
           {eyebrow}
         </p>

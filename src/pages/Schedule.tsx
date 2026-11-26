@@ -12,7 +12,7 @@ export default function Schedule() {
     { label: 'Shortlisting announcement', date: s.shortlistDate, note: 'Shortlisted teams are emailed and listed in the Admin / Home announcements.' },
     { label: 'Competition rounds', date: s.eventDate, note: 'Judging rounds and demos, as per the event-day schedule.' },
     { label: 'Final presentation', date: s.finalDate, note: 'Shortlisted teams present live to the judges.' },
-    { label: 'Award ceremony', date: s.awardDate, note: 'Winners, prizes and special recognition are announced.' },
+    { label: 'Award ceremony', date: s.awardDate, note: 'First Prize and Second Prize are announced.' },
   ]
   return (
     <>

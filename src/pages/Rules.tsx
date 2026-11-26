@@ -8,9 +8,9 @@ const SECTIONS = [
     icon: Users,
     title: 'Eligibility',
     items: [
-      'Open to enrolled undergraduate and postgraduate students of recognised colleges / universities.',
-      'Individual entries or teams of 2–4 members. A student may be part of only one team.',
-      'Team members may be from different departments; cross-college teams are allowed unless the edition rules say otherwise.',
+      'Open exclusively to students currently enrolled in undergraduate (UG) degree programmes.',
+      'Each registration must include exactly two participants: one Team Leader and one Team Partner.',
+      'Every team must develop an application based on the single Social Impact theme.',
       'Participants must register with a valid college email and mobile number and keep their registration ID.',
     ],
   },
@@ -21,7 +21,7 @@ const SECTIONS = [
       'One registration per team, filed by the team leader. All members must be named at registration.',
       'Team composition cannot change after the submission deadline without coordinator approval.',
       'Only registered members may present in the final round.',
-      'A team may submit one project only, under one category.',
+      'A team may submit one project only, under the Social Impact theme.',
     ],
   },
   {
@@ -29,7 +29,7 @@ const SECTIONS = [
     title: 'Project originality',
     items: [
       'Projects must be the team’s own original work. Third-party libraries, APIs and open-source code must be credited.',
-      'Submitting someone else’s project, or a project already submitted to AppThon in a previous edition, is disallowed.',
+      'Submitting someone else’s project, or a project already submitted to Appathon in a previous edition, is disallowed.',
       'AI tools may assist (code, copy, design) but the team must be able to explain and defend every part of the submission.',
       'Plagiarised, purchased or copied projects will be disqualified at any stage, including after prizes are announced.',
     ],

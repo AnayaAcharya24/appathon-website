@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
-import Categories from './pages/Categories'
 import Register from './pages/Register'
 import Submit from './pages/Submit'
 import Rules from './pages/Rules'
@@ -33,7 +32,6 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/categories" element={<Categories />} />
           <Route path="/register" element={<Register />} />
           <Route path="/submit" element={<Submit />} />
           <Route path="/rules" element={<Rules />} />

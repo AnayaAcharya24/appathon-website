@@ -1,4 +1,4 @@
-import { Award, GraduationCap, Medal, Sparkles, Trophy } from 'lucide-react'
+import { Award, Medal, Trophy } from 'lucide-react'
 import { PageHero } from '../components/Hero'
 import { Badge, Card } from '../components/ui'
 import { getSettings } from '../lib/store'
@@ -6,9 +6,9 @@ import { getSettings } from '../lib/store'
 export default function Prizes() {
   const s = getSettings()
   const prizes = [
-    { icon: Trophy, place: 'First Prize', value: s.firstPrize, note: 'Winner — overall best project across categories, by total judges’ score.' },
-    { icon: Medal, place: 'Second Prize', value: s.secondPrize, note: 'Runner-up — second-highest total score.' },
-    { icon: Medal, place: 'Third Prize', value: s.thirdPrize, note: 'Third place — third-highest total score.' },
+    { icon: Trophy, place: 'First Prize', value: s.firstPrize, note: 'Overall best project, based on the judges’ evaluation.' },
+    { icon: Medal, place: 'Second Prize', value: s.secondPrize, note: 'Second-highest project score, based on the judges’ evaluation.' },
+    { icon: Award, place: 'Participation Certificates', value: 'For participants', note: 'Participation certificates are provided for participants with a valid submission.' },
   ]
   return (
     <>
@@ -25,19 +25,6 @@ export default function Prizes() {
             <p className="font-display text-4xl mt-2">{p.value}</p>
             <p className="text-sm text-white/60 leading-relaxed mt-3">{p.note}</p>
             {i === 0 && <Badge className="mt-4">Overall winner</Badge>}
-          </Card>
-        ))}
-      </section>
-      <section className="max-w-7xl mx-auto px-6 pb-20 grid md:grid-cols-3 gap-4">
-        {[
-          { icon: Award, title: 'Participation certificates', text: 'Every participant with a valid, on-time submission receives a participation certificate. Winners receive separate winner certificates.' },
-          { icon: Sparkles, title: 'Special recognition', text: 'Category-best awards, Best Innovation, Best Presentation and similar special mentions may be awarded at the judges’ discretion and announced at the award ceremony.' },
-          { icon: GraduationCap, title: 'Mentorship opportunities', text: 'Mentorship for shortlisted / winning teams is offered if confirmed by the organisers — it is not guaranteed until announced here. Check this page and the Home announcements for confirmation.' },
-        ].map((c) => (
-          <Card key={c.title} className="!p-7">
-            <c.icon className="w-6 h-6 text-brand" />
-            <h3 className="font-display text-3xl mt-4">{c.title}</h3>
-            <p className="text-sm text-white/60 leading-relaxed mt-2">{c.text}</p>
           </Card>
         ))}
       </section>

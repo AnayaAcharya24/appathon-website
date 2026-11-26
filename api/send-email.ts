@@ -14,7 +14,7 @@ export default async function handler(req: any, res: any) {
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: process.env.RESEND_FROM ?? 'AppThon <noreply@appthon.in>',
+      from: process.env.RESEND_FROM ?? 'Appathon <noreply@appthon.in>',
       to: [to],
       subject,
       text: body,

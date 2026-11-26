@@ -1,82 +1,3 @@
-export interface CategoryInfo {
-  id: string
-  title: string
-  short: string
-  description: string
-  eligibility: string
-  requirements: string[]
-  examples: string[]
-}
-
-export const CATEGORIES: CategoryInfo[] = [
-  {
-    id: 'app-dev',
-    title: 'Application Development',
-    short: 'Build apps that solve real problems.',
-    description:
-      'Design and build a working web, mobile or desktop application that solves a real problem for real users. Judges look for a working product, not just slides — usability, code quality and a clear user need matter most.',
-    eligibility:
-      'Open to all enrolled undergraduate and postgraduate students. Individual or team entries (up to 4 members). The application must be built by the team during the competition period or substantially improved for it.',
-    requirements: [
-      'A working demo — live link, APK / build, or a recorded walkthrough.',
-      'Source code link (private repo access for judges, if requested).',
-      'A 2-page summary: problem, users, features, tech stack.',
-      'Team details and the role of each member.',
-    ],
-    examples: ['Campus utilities', 'Health & wellbeing apps', 'Productivity tools', 'Accessibility apps'],
-  },
-  {
-    id: 'business-innovation',
-    title: 'Business Innovation',
-    short: 'Turn an idea into a viable business.',
-    description:
-      'Pitch a new business model, service or process innovation. This category is for entrepreneurial thinking: a sharp problem, a customer, a revenue model and a plan to reach them — with a prototype or MVP where possible.',
-    eligibility:
-      'Open to all enrolled students, any discipline. Individual or team entries (up to 4 members). Business ideas must be original and not already operating as a registered company.',
-    requirements: [
-      'A business-model summary (problem, customer, value, revenue, costs).',
-      'Market / user research — even 10 real interviews count.',
-      'A pitch deck (max 10 slides) and, if available, an MVP or landing page.',
-      'Go-to-market plan for the first 90 days.',
-    ],
-    examples: ['Student services', 'Sustainability ventures', 'Fintech ideas', 'Campus businesses'],
-  },
-  {
-    id: 'ecommerce',
-    title: 'E-commerce Solutions',
-    short: 'Sell smarter, ship better, serve customers.',
-    description:
-      'Build or improve an online store, marketplace, or commerce tool — storefront, payments, logistics, discovery or seller tools. Judges reward real transactions, clear unit economics and a smooth buying experience.',
-    eligibility:
-      'Open to all enrolled students. Individual or team entries (up to 4 members). Stores may use existing platforms (Shopify, WooCommerce, custom) — the innovation must be yours.',
-    requirements: [
-      'A live store or working prototype with at least a demo checkout.',
-      'Product catalogue, pricing and a fulfilment / delivery plan.',
-      'How you acquire customers and what it costs.',
-      'Trust, returns and payment handling explained.',
-    ],
-    examples: ['Campus marketplaces', 'D2C brands', 'Seller tools', 'Social commerce'],
-  },
-  {
-    id: 'emerging-tech',
-    title: 'Emerging Technology',
-    short: 'AI, IoT, AR/VR, blockchain — applied, not just demoed.',
-    description:
-      'Apply an emerging technology — AI/ML, IoT, AR/VR, blockchain, robotics or edge computing — to a concrete problem. A clever model alone is not enough: show what changes for the user when the technology works.',
-    eligibility:
-      'Open to all enrolled students. Individual or team entries (up to 4 members). Teams must be able to explain how the technology works and where it can fail.',
-    requirements: [
-      'A working prototype or validated experiment, with data / results.',
-      'A clear explanation of the technology and why it fits this problem.',
-      'Limitations, risks and responsible-use notes (privacy, bias, safety).',
-      'Demo video (max 3 minutes) showing the system in action.',
-    ],
-    examples: ['AI study tools', 'IoT campus systems', 'AR learning', 'ML forecasting'],
-  },
-]
-
-export const CATEGORY_TITLES = CATEGORIES.map((c) => c.title)
-
 export interface Faq {
   q: string
   a: string
@@ -84,8 +5,8 @@ export interface Faq {
 
 export const FAQS: Faq[] = [
   {
-    q: 'Who can participate in AppThon?',
-    a: 'Any enrolled undergraduate or postgraduate student from a recognised college or university can participate, individually or as a team of up to 4 members. Team members may be from different departments, and — unless the rules for your edition say otherwise — from different colleges. Check the Rules page for the edition-specific rule.',
+    q: 'Who can participate in Appathon?',
+    a: 'Open exclusively to students currently enrolled in undergraduate (UG) degree programmes.',
   },
   {
     q: 'Is there a registration fee?',
@@ -93,7 +14,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: 'How do I register?',
-    a: 'Fill in the Registration form with your details, team details (if any) and project details. You will receive a unique registration ID (for example APP-2026-1001). Keep it safe — you need it, together with your registered email, to submit your project and to check your status.',
+    a: 'Fill in the Registration form with the two participant records and project details. You will receive a unique registration ID (for example APP-2026-1001). Keep it safe — you need it, together with your registered email, to submit your project and to check your status.',
   },
   {
     q: 'Can I register more than once?',
@@ -109,7 +30,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: 'Do all participants get certificates?',
-    a: 'Participation certificates are planned for all participants who complete a valid submission, and winners receive prizes and special recognition. Exact prizes are “To be announced” until the organisers confirm them — this site does not invent prize amounts.',
+    a: 'Participation certificates are planned for all participants who complete a valid submission. First Prize and Second Prize details are “To be announced” until the organisers confirm them — this site does not invent prize amounts.',
   },
   {
     q: 'Can I change my project after registering?',

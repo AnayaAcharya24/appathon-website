@@ -1,18 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Code2, Lightbulb, Megaphone, ShoppingBag, Sparkles, Trophy } from 'lucide-react'
+import { ArrowRight, Megaphone, Trophy } from 'lucide-react'
 import VideoHero, { SectionHead } from '../components/Hero'
 import CompetitionCanvas from '../components/CompetitionCanvas'
 import { Badge, Card } from '../components/ui'
-import { CATEGORIES } from '../data/content'
 import { getAnnouncements, getSettings } from '../lib/store'
-
-const ICONS: Record<string, typeof Code2> = {
-  'app-dev': Code2,
-  'business-innovation': Lightbulb,
-  ecommerce: ShoppingBag,
-  'emerging-tech': Sparkles,
-}
 
 export default function Home() {
   const settings = getSettings()
@@ -42,7 +34,7 @@ export default function Home() {
       <div className="home-hero-transition">
         <div className="home-hero-sticky">
           <VideoHero
-            eyebrow="WELCOME TO APPTHON."
+            eyebrow="WELCOME TO Appathon."
             title={
               <>
                 <span className="hero-headline-line">Your idea. Your application.</span>
@@ -53,9 +45,9 @@ export default function Home() {
             primaryLabel="Begin Journey"
             primaryTo="/register"
             secondaryLabel="Explore Competition"
-            secondaryTo="/categories"
+            secondaryTo="#social-impact"
           >
-            <div className="animate-fade-rise-delay-3 mt-8 flex flex-wrap justify-center gap-3">
+            <div className="hero-details-glass animate-fade-rise-delay-3 mt-8 flex flex-wrap justify-center gap-3">
               <Badge>Registration: {settings.regOpen} → {settings.regClose}</Badge>
               <Badge>Event: {settings.eventDate}</Badge>
               <Badge>Venue: {settings.venue}</Badge>
@@ -71,54 +63,55 @@ export default function Home() {
         />
       </div>
 
-      {/* Categories */}
-      <section className="w-full bg-midnight px-6 pb-12">
+      {/* Social Impact */}
+      <section id="social-impact" className="w-full bg-midnight px-6 pb-12">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
-            <SectionHead eyebrow="Categories" title="Four ways in." sub="Pick the category that fits your project — each has its own eligibility and submission requirements." />
-            <Link to="/categories" className="text-sm text-brand-bright hover:text-white inline-flex items-center gap-1">
-              View all categories <ArrowRight className="w-4 h-4" />
+          <SectionHead eyebrow="Social Impact" title="One theme. Meaningful change." sub="Every team must develop an application based on the single Social Impact theme." />
+          <Card className="mt-8 !p-8 border-brand/25 bg-brand/10">
+            <p className="text-white/75 leading-relaxed">
+              Social Impact is the central theme of Appathon. Participants are challenged to build innovative applications that address real-world social problems, meet community needs and create meaningful, lasting positive change through technology. Projects should combine creativity and practical solutions to make a genuine difference in people's lives.
+            </p>
+            <p className="text-sm text-brand-bright mt-5">Eligibility: Open exclusively to students currently enrolled in undergraduate (UG) degree programmes.</p>
+            <Link to="/register" className="text-sm text-brand-bright hover:text-white inline-flex items-center gap-1 mt-5">
+              Build for Social Impact <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {CATEGORIES.map((c) => {
-              const Icon = ICONS[c.id] ?? Code2
-              return (
-                <Link key={c.id} to={`/categories#${c.id}`}>
-                  <Card className="h-full hover:border-brand/40 transition-colors">
-                    <Icon className="w-6 h-6 text-brand" />
-                    <h3 className="font-display text-3xl mt-4">{c.title}</h3>
-                    <p className="text-white/60 text-sm leading-relaxed mt-2">{c.short}</p>
-                    <span className="text-sm text-brand-bright inline-flex items-center gap-1 mt-4">
-                      Eligibility &amp; requirements <ArrowRight className="w-4 h-4" />
-                    </span>
-                  </Card>
-                </Link>
-              )
-            })}
-          </div>
+          </Card>
         </div>
       </section>
 
       {/* Prizes teaser + announcements */}
-      <section className="max-w-7xl mx-auto px-6 pb-20 grid lg:grid-cols-2 gap-4">
-        <Card className="!p-8 bg-brand/10 border-brand/25">
-          <Trophy className="w-7 h-7 text-brand" />
-          <h3 className="font-display text-4xl mt-4">Prizes &amp; recognition</h3>
-          <p className="text-white/65 leading-relaxed mt-3">
-            First, second and third prizes, participation certificates, special recognition and
-            mentorship opportunities. Exact prize details are confirmed by the organisers and
-            published on the Prizes page.
-          </p>
-          <div className="flex gap-6 mt-6 text-sm">
-            <span><span className="text-white/50 block text-xs">1st Prize</span>{settings.firstPrize}</span>
-            <span><span className="text-white/50 block text-xs">2nd Prize</span>{settings.secondPrize}</span>
-            <span><span className="text-white/50 block text-xs">3rd Prize</span>{settings.thirdPrize}</span>
+      <section className="max-w-7xl mx-auto px-6 pb-20 grid gap-4 lg:grid-cols-2 lg:items-start">
+        <div className="home-awards-panel">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <Trophy className="w-7 h-7 text-brand" />
+              <h3 className="font-display text-4xl mt-4">Prizes &amp; recognition</h3>
+              <p className="text-white/65 leading-relaxed mt-3 max-w-2xl">
+                First Prize, Second Prize and Participation Certificates. Exact prize details are confirmed by the organisers and published on the Prizes page.
+              </p>
+            </div>
+            <Link to="/prizes" className="inline-flex items-center gap-1 text-sm text-brand-bright hover:text-white">
+              See prizes <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
-          <Link to="/prizes" className="inline-flex items-center gap-1 text-sm text-brand-bright mt-6 hover:text-white">
-            See prizes <ArrowRight className="w-4 h-4" />
-          </Link>
-        </Card>
+          <div className="home-awards-rail" aria-label="Prizes and recognition">
+            <article className="home-award-card home-award-card--first">
+              <div className="home-award-visual" aria-hidden="true"><span className="home-award-medal"><b>1</b></span></div>
+              <p className="home-award-kicker">First Prize</p>
+              <p className="home-award-value">{settings.firstPrize}</p>
+            </article>
+            <article className="home-award-card home-award-card--second">
+              <div className="home-award-visual" aria-hidden="true"><span className="home-award-medal"><b>2</b></span></div>
+              <p className="home-award-kicker">Second Prize</p>
+              <p className="home-award-value">{settings.secondPrize}</p>
+	            </article>
+	            <article className="home-award-card home-award-card--certificates">
+	              <div className="home-award-visual" aria-hidden="true"><span className="home-award-certificate" /></div>
+	              <p className="home-award-kicker">Participation Certificate</p>
+              <p className="home-award-value">For participants</p>
+            </article>
+          </div>
+        </div>
         <Card className="!p-8">
           <Megaphone className="w-7 h-7 text-brand" />
           <h3 className="font-display text-4xl mt-4">Important announcements</h3>
@@ -151,7 +144,7 @@ export default function Home() {
               <span className="home-final-cta__accent">Build it here.</span>
             </h2>
             <p>
-              Register your team and your project, submit your demo before the deadline, and present it on the AppThon stage.
+              Register your team and your project, submit your demo before the deadline, and present it on the Appathon stage.
             </p>
             <div className="home-final-cta__actions">
               <Link to="/register" className="home-final-cta__button home-final-cta__button--primary">

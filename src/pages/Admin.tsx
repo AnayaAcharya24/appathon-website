@@ -85,10 +85,10 @@ export default function Admin() {
     setRegs(next)
     setSelected(next.find((x) => x.id === r.id) ?? null)
     if (status === 'approved') {
-      await queueEmail('approval', r.email, `AppThon registration approved — ${r.registrationId}`, `Hi ${r.fullName},\n\nYour AppThon registration (${r.registrationId}) has been approved. Submit your project before ${settings.submissionDeadline}.\n\n— Team AppThon`)
+      await queueEmail('approval', r.email, `Appathon registration approved — ${r.registrationId}`, `Hi ${r.fullName},\n\nYour Appathon registration (${r.registrationId}) has been approved. Submit your project before ${settings.submissionDeadline}.\n\n— Team Appathon`)
     }
     if (status === 'rejected') {
-      await queueEmail('rejection', r.email, `AppThon registration update — ${r.registrationId}`, `Hi ${r.fullName},\n\nYour AppThon registration (${r.registrationId}) was not approved this time. Contact the coordinators if you believe this is a mistake.\n\n— Team AppThon`)
+      await queueEmail('rejection', r.email, `Appathon registration update — ${r.registrationId}`, `Hi ${r.fullName},\n\nYour Appathon registration (${r.registrationId}) was not approved this time. Contact the coordinators if you believe this is a mistake.\n\n— Team Appathon`)
     }
   }
 
@@ -162,7 +162,7 @@ export default function Admin() {
             <Button type="submit" variant="brand" className="w-full py-3">Sign in to Admin</Button>
           </form>
           <p className="text-xs text-white/40 mt-5 text-center">
-            Demo credentials — <span className="text-white/70">admin@appthon.in / AppThon@2026</span><br />
+            Demo credentials — <span className="text-white/70">admin@appthon.in / Appathon@2026</span><br />
             Change or disable them before any real deployment.
           </p>
         </Card>
@@ -198,7 +198,7 @@ export default function Admin() {
 
         {tab === 'overview' && (
           <div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 { label: 'Total registrations', value: stats.total },
                 { label: 'Participating colleges', value: stats.colleges },

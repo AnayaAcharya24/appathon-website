@@ -100,8 +100,8 @@ export default function Submit() {
       await queueEmail(
         'confirmation',
         reg.email,
-        `AppThon project submitted — ${reg.registrationId}`,
-        `Hi ${reg.fullName},\n\nYour project "${sub.projectTitle}" was submitted for AppThon.\nRegistration ID: ${reg.registrationId}\nStatus: submitted\n\nYou can re-submit before the deadline (${settings.submissionDeadline}) to replace this version.\n\n— Team AppThon`,
+        `Appathon project submitted — ${reg.registrationId}`,
+        `Hi ${reg.fullName},\n\nYour project "${sub.projectTitle}" was submitted for Appathon.\nRegistration ID: ${reg.registrationId}\nStatus: submitted\n\nYou can re-submit before the deadline (${settings.submissionDeadline}) to replace this version.\n\n— Team Appathon`,
       )
       setDone(sub)
       window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -116,7 +116,7 @@ export default function Submit() {
         <Card className="!p-8 text-center">
           <CheckCircle2 className="w-12 h-12 text-green-400 mx-auto" />
           <h1 className="font-display text-5xl mt-4">Project submitted.</h1>
-          <p className="text-white/65 mt-3">“{done.projectTitle}” is now with the AppThon team for review.</p>
+          <p className="text-white/65 mt-3">“{done.projectTitle}” is now with the Appathon team for review.</p>
           <dl className="text-sm max-w-md mx-auto mt-6 space-y-2 text-left">
             <div className="flex justify-between"><dt className="text-white/50">Registration ID</dt><dd className="font-mono">{done.registrationId}</dd></div>
             <div className="flex justify-between"><dt className="text-white/50">Status</dt><dd className="capitalize">{done.status}</dd></div>

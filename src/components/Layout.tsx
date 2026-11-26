@@ -7,7 +7,6 @@ import { cn } from '../lib/utils'
 const NAV = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
-  { to: '/categories', label: 'Categories' },
   { to: '/rules', label: 'Rules' },
   { to: '/prizes', label: 'Prizes' },
   { to: '/schedule', label: 'Schedule' },
@@ -50,12 +49,12 @@ export default function Layout() {
         }}
       >
         <nav className="relative pointer-events-auto mx-auto flex w-full flex-row items-center justify-between rounded-full border border-brand-bright/15 bg-midnight/70 px-3 py-3 shadow-[0_12px_36px_rgba(5,5,11,0.32)] backdrop-blur-xl sm:px-5 sm:py-3.5 xl:px-7">
-          <Link to="/" className="flex items-center gap-2.5" aria-label="AppThon home">
+          <Link to="/" className="flex items-center gap-2.5" aria-label="Appathon home">
             <span className="grid place-items-center w-9 h-9 rounded-full bg-brand text-white">
               <Zap className="w-5 h-5" fill="currentColor" />
             </span>
             <span className="font-display text-3xl tracking-tight leading-none">
-              AppThon<sup className="text-xs align-super">®</sup>
+              Appathon<sup className="text-xs align-super">®</sup>
             </span>
           </Link>
 
@@ -140,7 +139,7 @@ export default function Layout() {
                 <Zap className="w-5 h-5" fill="currentColor" />
               </span>
               <span className="font-display text-3xl tracking-tight">
-                AppThon<sup className="text-xs align-super">®</sup>
+                Appathon<sup className="text-xs align-super">®</sup>
               </span>
             </div>
             <p className="text-white/60 text-sm leading-relaxed mt-4 max-w-md">
@@ -155,7 +154,6 @@ export default function Layout() {
           <div>
             <h3 className="text-sm font-semibold mb-4">Competition</h3>
             <ul className="space-y-2.5 text-sm text-white/60">
-              <li><Link className="hover:text-white" to="/categories">Categories</Link></li>
               <li><Link className="hover:text-white" to="/register">Register</Link></li>
               <li><Link className="hover:text-white" to="/submit">Project Submission</Link></li>
               <li><Link className="hover:text-white" to="/rules">Rules &amp; Guidelines</Link></li>
@@ -177,7 +175,7 @@ export default function Layout() {
         </div>
         <div className="border-t border-white/10">
           <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between gap-2 text-xs text-white/40">
-            <span>© {CURRENT_YEAR} AppThon. All rights reserved.</span>
+            <span>© {CURRENT_YEAR} Appathon. All rights reserved.</span>
             <span>
               <Link to="/privacy" className="hover:text-white/80">Privacy &amp; Consent</Link>
               {' · '}

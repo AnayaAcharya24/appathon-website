@@ -1,4 +1,4 @@
-# AppThon — From Idea to Impact
+# Appathon — From Idea to Impact
 
 A complete, working inter-collegiate innovation & application competition website:
 information portal + participant registration + project submission + admin
@@ -6,7 +6,7 @@ competition-management system.
 
 **Design:** the Velorah-style cinematic hero from the brief — fullscreen looping
 background video, glassmorphic navigation, Instrument Serif display type + Inter
-body, dark navy (`201 100% 13%`) with Electric Orange (`#FF5A1F`) as the AppThon
+body, dark navy (`201 100% 13%`) with Electric Orange (`#FF5A1F`) as the Appathon
 accent. Liquid-glass buttons use the exact `.liquid-glass` CSS from the spec,
 with `fade-rise` entrance animations (0s / 0.2s / 0.4s).
 
@@ -77,7 +77,7 @@ npm run preview    # serve the production build
 Demo login (change before any real deployment):
 
 - Email: `admin@appthon.in`
-- Password: `AppThon@2026`
+- Password: `Appathon@2026`
 
 Features, all working:
 
@@ -121,7 +121,7 @@ the Vite frontend the hero design specified, plus the full backend wiring:
 3. **Email (Resend)** — deploy the Edge Function and set its secret:
    ```bash
    supabase functions deploy send-confirmation
-   supabase secrets set RESEND_API_KEY=re_... RESEND_FROM="AppThon <noreply@appthon.in>"
+   supabase secrets set RESEND_API_KEY=re_... RESEND_FROM="Appathon <noreply@appthon.in>"
    ```
    Alternative: use `api/send-email.ts` as a Vercel Serverless Function with
    `RESEND_API_KEY` / `RESEND_FROM` set in Vercel env (server-side only).

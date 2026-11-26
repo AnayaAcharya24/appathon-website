@@ -8,6 +8,11 @@ export interface TeamMember {
   email: string
   phone: string
   role: string
+  college?: string
+  department?: string
+  year?: string
+  city?: string
+  state?: string
 }
 
 export interface Registration {
@@ -129,7 +134,7 @@ const K = {
 }
 
 export const DEFAULT_SETTINGS: Settings = {
-  eventName: 'AppThon',
+  eventName: 'Appathon',
   tagline: 'From Idea to Impact',
   institution: TBA,
   regOpen: TBA,
@@ -184,14 +189,14 @@ const DEFAULT_ANNOUNCEMENTS: Announcement[] = [
   {
     id: 'ann-1',
     title: 'Registrations open soon',
-    body: 'AppThon — From Idea to Impact is an inter-collegiate innovation and application competition. Registration dates, venue and prizes will be published here as soon as the organising institution confirms them.',
+    body: 'Appathon — From Idea to Impact is an inter-collegiate innovation and application competition. Registration dates, venue and prizes will be published here as soon as the organising institution confirms them.',
     date: new Date().toISOString(),
     pinned: true,
   },
   {
     id: 'ann-2',
-    title: 'Four categories, one stage',
-    body: 'Apply under Application Development, Business Innovation, E-commerce Solutions or Emerging Technology. Read the category page for eligibility and submission requirements before you register.',
+    title: 'One theme: Social Impact',
+    body: 'Every team must develop an application based on the single Social Impact theme, identifying a real-world social problem and creating positive change in society.',
     date: new Date().toISOString(),
     pinned: false,
   },
@@ -202,7 +207,15 @@ export function getAnnouncements(): Announcement[] {
     write(K.announcements, DEFAULT_ANNOUNCEMENTS)
     return DEFAULT_ANNOUNCEMENTS
   }
-  return list
+  const migrated = list.map((announcement) => announcement.title.toLowerCase().includes('categor')
+    ? {
+        ...announcement,
+        title: 'One theme: Social Impact',
+        body: 'Every team must develop an application based on the single Social Impact theme, identifying a real-world social problem and creating positive change in society.',
+      }
+    : announcement)
+  if (JSON.stringify(migrated) !== JSON.stringify(list)) write(K.announcements, migrated)
+  return migrated
 }
 export function saveAnnouncements(list: Announcement[]) {
   write(K.announcements, list)
@@ -225,13 +238,13 @@ function sampleRegistrations(): Registration[] {
     participationType: 'team',
     teamName: 'Sample Team',
     teamLeader: 'Sample Student',
-    teamSize: 3,
+    teamSize: 2,
     members: [
       { name: 'Sample Student', email: 'sample@college.edu', phone: '9876543210', role: 'Team Leader' },
       { name: 'Asha Rao', email: 'asha@college.edu', phone: '9876500001', role: 'Developer' },
     ],
     projectTitle: 'CampusCart — a campus marketplace app',
-    category: 'E-commerce Solutions',
+    category: 'Social Impact',
     problemStatement: 'Students struggle to buy and sell used books and notes on campus.',
     projectDescription: 'A mobile marketplace for verified campus buyers and sellers.',
     innovation: 'Verified college-ID listings with in-campus pickup slots.',
@@ -252,11 +265,11 @@ function sampleRegistrations(): Registration[] {
       email: 'rohan@college.edu',
       college: 'National Institute of Technology',
       projectTitle: 'MediTrack — medicine reminders for elders',
-      category: 'Application Development',
+      category: 'Social Impact',
       status: 'approved',
-      participationType: 'individual',
+      participationType: 'team',
       teamName: '',
-      teamSize: 1,
+      teamSize: 2,
     }),
     base({
       registrationId: 'APP-2026-1003',
@@ -264,7 +277,7 @@ function sampleRegistrations(): Registration[] {
       email: 'priya@college.edu',
       college: 'Sample College of Engineering',
       projectTitle: 'AgriSense — crop-price forecasting',
-      category: 'Emerging Technology',
+      category: 'Social Impact',
       status: 'shortlisted',
       technologies: 'Python, Machine Learning',
     }),
@@ -278,7 +291,11 @@ export function getRegistrations(): Registration[] {
     write(K.regs, seed)
     return seed
   }
-  return list
+  const migrated = list.map((registration) => registration.category && registration.category !== 'Social Impact'
+    ? { ...registration, category: 'Social Impact' }
+    : registration)
+  if (JSON.stringify(migrated) !== JSON.stringify(list)) write(K.regs, migrated)
+  return migrated
 }
 export function saveRegistrations(list: Registration[]) {
   write(K.regs, list)
@@ -306,7 +323,12 @@ export async function createRegistration(
   data: Omit<Registration, 'id' | 'registrationId' | 'status' | 'createdAt'>,
 ): Promise<{ reg: Registration; duplicate: Registration | null }> {
   const list = getRegistrations()
-  const duplicate = findDuplicate(data.email, data.phone, list)
+  const duplicate = findDuplicate(data.email, data.phone, list) ?? list.find((registration) =>
+    data.members.some((member) => registration.email.trim().toLowerCase() === member.email.trim().toLowerCase()
+      || registration.phone.replace(/\D/g, '') === member.phone.replace(/\D/g, '')
+      || registration.members.some((existing) => existing.email.trim().toLowerCase() === member.email.trim().toLowerCase()
+        || existing.phone.replace(/\D/g, '') === member.phone.replace(/\D/g, ''))),
+  ) ?? null
   if (duplicate) return { reg: duplicate, duplicate }
   const reg: Registration = {
     ...data,
@@ -319,9 +341,57 @@ export async function createRegistration(
   saveRegistrations(next)
   // Best-effort Supabase sync — never blocks the confirmation screen.
   if (isSupabaseConfigured && supabase) {
+    let participantIds: (string | null)[] = [null, null]
+    let teamId: string | null = null
+    const partner = reg.members[0]
+    try {
+      const { data } = await supabase.from('participants').insert([
+        {
+          full_name: reg.fullName,
+          email: reg.email,
+          phone: reg.phone,
+          college: reg.college,
+          department: reg.department,
+          year_of_study: reg.year,
+          city: reg.city,
+          state: reg.state,
+        },
+        {
+          full_name: partner?.name ?? '',
+          email: partner?.email ?? '',
+          phone: partner?.phone ?? '',
+          college: partner?.college ?? '',
+          department: partner?.department ?? '',
+          year_of_study: partner?.year ?? '',
+          city: partner?.city ?? '',
+          state: partner?.state ?? '',
+        },
+      ]).select('id')
+      participantIds = (data ?? []).map((row: { id: string }) => row.id)
+    } catch {
+      /* The registration row below remains the source of truth if participant sync fails. */
+    }
+    try {
+      const { data } = await supabase.from('teams').insert({
+        name: `Appathon ${reg.registrationId}`,
+        leader_id: participantIds[0],
+        size: 2,
+      }).select('id').single()
+      teamId = data?.id ? String(data.id) : null
+      if (teamId) {
+        await supabase.from('team_members').insert([
+          { team_id: teamId, participant_id: participantIds[0], name: reg.fullName, email: reg.email, phone: reg.phone, role: 'Team Leader' },
+          { team_id: teamId, participant_id: participantIds[1], name: partner?.name ?? '', email: partner?.email ?? '', phone: partner?.phone ?? '', role: 'Team Partner' },
+        ])
+      }
+    } catch {
+      /* The registration row below remains the source of truth if team sync fails. */
+    }
     try {
       await supabase.from('registrations').insert({
         registration_id: reg.registrationId,
+        participant_id: participantIds[0],
+        team_id: teamId,
         full_name: reg.fullName,
         email: reg.email,
         phone: reg.phone,
@@ -527,7 +597,7 @@ export async function queueEmail(
 }
 
 /* ---------- Admin session ---------- */
-export const DEMO_ADMIN = { email: 'admin@appthon.in', password: 'AppThon@2026' }
+export const DEMO_ADMIN = { email: 'admin@appthon.in', password: 'Appathon@2026' }
 export function isAdminLoggedIn(): boolean {
   try {
     return localStorage.getItem(K.admin) === '1'

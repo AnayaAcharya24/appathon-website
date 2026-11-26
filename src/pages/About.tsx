@@ -8,22 +8,21 @@ export default function About() {
   return (
     <>
       <PageHero
-        eyebrow="About AppThon"
+        eyebrow="About Appathon"
         title="Technology meets possibility."
-        subtext="AppThon — From Idea to Impact is an inter-collegiate innovation and application competition. It exists for one reason: to give students a real stage to turn what they learn into what they can build."
+        subtext="Appathon — From Idea to Impact is an inter-collegiate innovation and application competition. It exists for one reason: to give students a real stage to turn what they learn into what they can build."
       />
       <section className="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12">
         <div>
           <SectionHead
             eyebrow="Introduction"
             title="An idea is only the start."
-            sub="Every product, startup and research breakthrough began as a rough idea in someone's notebook. AppThon is the space between that notebook and the real world — a competition where students design, build, test and present applications and business ideas, and get honest feedback from people who build for a living."
+            sub="Every product, startup and research breakthrough began as a rough idea in someone's notebook. Appathon is the space between that notebook and the real world — a competition where students design, build, test and present applications and business ideas, and get honest feedback from people who build for a living."
           />
           <p className="text-white/60 leading-relaxed mt-6">
-            Participants work in the open: a real problem, a real user, a working demo. The
-            competition covers application development, business innovation, e-commerce solutions
-            and emerging technology, so whether you write code, design experiences, or think in
-            business models, there is a category for your strengths.
+            Participants work in the open: a real social problem, a real user, and a working
+            application. Every team develops an application under the single Social Impact theme,
+            using technology creatively to address community needs and improve lives.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 gap-4">
@@ -31,7 +30,7 @@ export default function About() {
             { icon: Eye, title: 'Vision', text: 'A generation of students who don’t wait for permission to build — who see a problem and ship a solution.' },
             { icon: Target, title: 'Mission', text: 'To give every participating student a fair, rigorous, encouraging platform to build, present and improve a real idea.' },
             { icon: Compass, title: 'How we judge', text: 'On what works, who it helps, and how clearly the team can explain it — not on polish alone.' },
-            { icon: Rocket, title: 'What you leave with', text: 'A working project, judges’ feedback, a certificate, and — for the best teams — prizes and mentorship.' },
+            { icon: Rocket, title: 'What you leave with', text: 'A working project, judges’ feedback, a participation certificate, and the opportunity to compete for First Prize or Second Prize.' },
           ].map((c) => (
             <Card key={c.title}>
               <c.icon className="w-6 h-6 text-brand" />
@@ -43,14 +42,14 @@ export default function About() {
       </section>
 
       <section className="max-w-7xl mx-auto px-6 pb-16">
-        <SectionHead eyebrow="Objectives" title="What AppThon is trying to do." />
+        <SectionHead eyebrow="Objectives" title="What Appathon is trying to do." />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
           {[
             'Encourage students to build innovative applications that solve real problems.',
-            'Develop entrepreneurial thinking — customers, revenue, and sustainability, not just features.',
-            'Surface e-commerce and technology-driven business concepts from campuses.',
+            'Develop practical solutions that address community needs and can create lasting impact.',
+            'Use technology creatively to solve meaningful social problems from campuses and communities.',
             'Teach teams to present, defend and iterate on their work under real evaluation.',
-            'Connect students with mentors, judges and peers from other colleges.',
+            'Connect students with judges and peers from other colleges.',
             'Create a portfolio-grade project every participant can show to employers and collaborators.',
           ].map((o, i) => (
             <Card key={o}>
@@ -69,7 +68,7 @@ export default function About() {
             <li>You finish with a working product — the strongest thing a student portfolio can hold.</li>
             <li>You learn to scope, build and demo under a deadline, the way real teams work.</li>
             <li>Judges’ scores and comments tell you exactly what to improve next.</li>
-            <li>Winners receive prizes and recognition; every valid submission earns a participation certificate.</li>
+            <li>First Prize and Second Prize are awarded as confirmed by the organisers; every valid submission earns a participation certificate.</li>
             <li>You meet builders from other colleges — future co-founders, teammates and friends.</li>
           </ul>
         </Card>
@@ -77,7 +76,7 @@ export default function About() {
           <Users className="w-7 h-7 text-brand" />
           <h3 className="font-display text-4xl mt-4">Organising institution</h3>
           <p className="text-white/70 leading-relaxed mt-4">
-            AppThon is organised by <strong className="text-white">{settings.institution}</strong>.
+            Appathon is organised by <strong className="text-white">{settings.institution}</strong>.
             Institution details, faculty coordinator and student coordinators are published on the
             Contact page as soon as they are confirmed by the organisers.
           </p>

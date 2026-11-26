@@ -1,7 +1,7 @@
 // Supabase Edge Function: send-confirmation
-// Sends AppThon emails via Resend. Deploy with:
+// Sends Appathon emails via Resend. Deploy with:
 //   supabase functions deploy send-confirmation
-//   supabase secrets set RESEND_API_KEY=... RESEND_FROM="AppThon <noreply@appthon.in>"
+//   supabase secrets set RESEND_API_KEY=... RESEND_FROM="Appathon <noreply@appthon.in>"
 // The RESEND_API_KEY lives ONLY here (server-side). Never in frontend code.
 // The frontend calls this with supabase.functions.invoke('send-confirmation', ...)
 // and records the result in the Admin > Emails log (queued vs sent).
@@ -10,7 +10,7 @@
 import { serve } from 'https://deno.land/std@0.224.0/http/server.ts'
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY') ?? ''
-const FROM = Deno.env.get('RESEND_FROM') ?? 'AppThon <noreply@appthon.in>'
+const FROM = Deno.env.get('RESEND_FROM') ?? 'Appathon <noreply@appthon.in>'
 
 serve(async (req: Request) => {
   if (req.method !== 'POST') {

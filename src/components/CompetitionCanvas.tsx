@@ -24,19 +24,19 @@ const BENEFITS: Array<{
   {
     id: 'team',
     title: 'Team up',
-    text: 'Individual or team entries — up to 4 members, across departments.',
+    text: 'Exactly two participants per team: one leader and one partner.',
     icon: Users,
   },
   {
     id: 'win',
     title: 'Win & be seen',
-    text: 'Prizes, certificates and special recognition for standout work.',
+    text: 'First Prize, Second Prize and Participation Certificates.',
     icon: Trophy,
   },
   {
     id: 'mentor',
-    title: 'Mentorship',
-    text: 'Feedback from judges and mentors to take your idea further.',
+    title: 'Social Impact',
+    text: 'Every team builds an application that creates positive change.',
     icon: Award,
   },
 ]
@@ -134,7 +134,7 @@ export default function CompetitionCanvas({ regOpen, regClose, eventDate, venue 
               <span className="competition-heading__impact">Impact.</span>
             </h2>
             <p className="competition-description competition-reveal competition-reveal--3">
-              AppThon encourages students to develop innovative applications, entrepreneurial ideas, e-commerce solutions and technology-driven business concepts — then put them in front of real judges, mentors and peers.
+              Appathon challenges students to identify real-world social problems and develop innovative applications that create positive change — then put them in front of real judges and peers.
             </p>
           </div>
 

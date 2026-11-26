@@ -1,4 +1,4 @@
--- AppThon — Supabase schema
+-- Appathon — Supabase schema
 -- Run this in the Supabase SQL Editor (or: supabase db push with the CLI).
 -- Tables 1-10 from the master prompt, with relationships, unique
 -- registration IDs, and Row Level Security. Never put the service-role
